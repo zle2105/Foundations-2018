@@ -102,7 +102,7 @@ svg
   .attr('r', 2)
   .attr('cx', d => xPositionScale(d.values[0].datetime))
   .attr('cy', d => yPositionScale(d.values[0].price))
-  .attr('fill', 'black')
+  .attr('fill', 'red')
 
   // Add your text on the right-hand side
 
