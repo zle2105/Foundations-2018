@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "dist"
+		},
+		{
+			"path": "hints"
+		},
+		{
+			"path": "src"
+		},
+		{
+			"path": "tests"
+		},
+		{
+			"path": ".cache"
+		},
+		{
+			"path": "node_modules"
+		},
+		{
+			"path": "__MACOSX"
+		}
+	]
+}

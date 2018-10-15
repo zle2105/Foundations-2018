@@ -1,6 +1,6 @@
 import * as d3 from 'd3'
 
-var margin = { top: 0, left: 0, right: 0, bottom: 0 }
+var margin = { top: 10, left: 10, right: 10, bottom: 10 }
 var height = 600 - margin.top - margin.bottom
 var width = 600 - margin.left - margin.right
 
@@ -39,8 +39,7 @@ d3.csv(require('./data/time-breakdown.csv'))
   .catch(err => console.log('Failed with', err))
 
 function ready(datapoints) {
-  var container = svg.append('g')
-  .attr('transform', 'translate(200,200)')
+  var container = svg.append('g').attr('transform', 'translate(200,200)')
 
   // console.log(pie(datapoints))
 
@@ -51,9 +50,23 @@ function ready(datapoints) {
     .append('path')
     .attr('d', d => arc(d))
     .attr('fill', d => colorScale(d.data.task))
-    
 
+  // text
 
+  container
+    .selectAll('text')
+    .data(pie(datapoints))
+    .enter()
+    .append('text')
+    .text(d => d.data.task)
+    .attr('transform', function(d) {
+      return 'translate(' + labelArc.centroid(d) + ')'
+    })
+    .attr('text-anchor', function(d) {
+      if (d.startAngle > Math.PI) {
+        return 'end'
+      } else {
+        return 'start'
+      }
+    })
 }
-
-
